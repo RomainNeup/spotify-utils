@@ -20,7 +20,9 @@ concurrency:
 jobs:
   build:
     environment:
-      name: github-pages
+      VITE_SPOTIFY_CLIENT_ID: ${{ secrets.VITE_SPOTIFY_CLIENT_ID }}
+      VITE_SPOTIFY_REDIRECT_URI: ${{ secrets.VITE_SPOTIFY_REDIRECT_URI }}
+      VITE_SPOTIFY_AUTH_URL: ${{ secrets.VITE_SPOTIFY_AUTH_URL }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout app

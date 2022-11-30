@@ -1,0 +1,24 @@
+name: Build CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout app
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        uses: comchangs/action-yarn@v0.1-beta
+        with:
+          args: yarn install
+      - name: Build app
+        uses: comchangs/action-yarn@v0.1-beta
+        with:
+          args: yarn build

@@ -2,7 +2,7 @@ name: Build CI
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "ci" ]
   pull_request:
     branches: [ "master" ]
 
@@ -25,6 +25,10 @@ jobs:
         run: npm install
       - name: Build app
         run: npm run build
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: './dist'
   deploy:
     environment:
       name: github-pages
@@ -34,12 +38,6 @@ jobs:
     steps:
       - name: Setup Pages
         uses: actions/configure-pages@v2
-      - name: ls files
-        run: ls
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
-        with:
-          path: './dist'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1

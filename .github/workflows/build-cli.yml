@@ -22,13 +22,9 @@ jobs:
         with:
           node-version: 16
       - name: Install dependencies
-        uses: CultureHQ/actions-yarn@master
-        with:
-          args: install
+        run: npm install
       - name: Build app
-        uses: CultureHQ/actions-yarn@master
-        with:
-          args: build
+        run: npm build
   deploy:
     environment:
       name: github-pages

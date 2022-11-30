@@ -18,6 +18,9 @@ jobs:
     steps:
       - name: Checkout app
         uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
       - name: Install dependencies
         uses: CultureHQ/actions-yarn@master
         with:

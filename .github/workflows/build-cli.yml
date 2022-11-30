@@ -18,16 +18,14 @@ jobs:
     steps:
       - name: Checkout app
         uses: actions/checkout@v3
-      - name: Setup Pages
-        uses: actions/configure-pages@v2
       - name: Install dependencies
-        uses: comchangs/action-yarn@v0.1-beta
+        uses: CultureHQ/actions-yarn@master
         with:
-          args: yarn install
+          args: install
       - name: Build app
-        uses: comchangs/action-yarn@v0.1-beta
+        uses: CultureHQ/actions-yarn@master
         with:
-          args: yarn build
+          args: build
   deploy:
     environment:
       name: github-pages
